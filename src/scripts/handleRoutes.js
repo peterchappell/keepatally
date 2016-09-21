@@ -57,6 +57,19 @@ var handleRoutes = function(router) {
       document.querySelector('#show').classList.add('hide');
       document.querySelector('#signIn').classList.remove('hide');
       document.querySelector('#talliesList').classList.add('hide');
+      if (firebase.auth().currentUser && !firebase.auth().currentUser.isAnonymous) {
+        console.log('you are already signed in');
+        document.querySelector('#signIn_content').innerHTML = '<p>You are signed in. Nice one.</p><p>Maybe you should <a href="/create">create a new tally</a> or <a href="/tallies">review your existing tallies</a>.</p>';
+      }
+    })
+    .on('/signout', function() {
+      console.log('signOut');
+      firebase.auth().signOut().then(function() {
+        console.log('signed out');
+        location.href="/";
+      }, function(error) {
+        console.log('error - could not sign out', error);
+      });
     })
     .on(function () {
       document.querySelector('#welcome').classList.remove('hide');

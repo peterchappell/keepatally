@@ -21,6 +21,7 @@ var router = new Navigo();
 // extra requires
 var handleRoutes = require('./handleRoutes');
 var clickBindings = require('./clickBindings');
+var formBindings = require('./formBindings');
 var signInAnonymously = require('./signInAnonymously');
 
 /* set up on window load */
@@ -28,29 +29,23 @@ window.addEventListener('load', function() {
 
   firebase.auth().onAuthStateChanged(function(user) {
     console.log('AUTH STATE CHANGED', user);
-    if (user) {
-      var currentUser = firebase.auth().currentUser;
-      console.log('We are good to go', currentUser);
-      if (!firebase.auth().currentUser.isAnonymous) {
-        document.querySelector('#signInButton').text = "Sign out";
-      }
+    if (firebase.auth().currentUser && !firebase.auth().currentUser.isAnonymous) {
+      console.log('SIGNED IN');
+      document.querySelector('#signInButton').text = "Sign out";
+      document.querySelector('#signInButton').setAttribute("href", "/signout");
     } else {
-      console.log('NO CAN DO!');
+      console.log('NOT SIGNED IN (or signed in anonymously)');
+      document.querySelector('#signInButton').text = "Sign in";
+      document.querySelector('#signInButton').setAttribute("href", "/signin");
       signInAnonymously();
     }
     handleRoutes(router);
     clickBindings(router);
+    formBindings(router);
   });
 
   firebase.auth().getRedirectResult().then(function(result) {
     console.log('AUTH REDIRECT', result);
-    if (result.credential) {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = result.credential.accessToken;
-      console.log('token', token);
-    }
-    handleRoutes(router);
-    clickBindings(router);
   }).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;

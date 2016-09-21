@@ -12,6 +12,9 @@ var showTally = function(tallyId) {
   });
 };
 
+// TODO: Refactor this. Instead of iterating through all strokes, render the correct number of
+// blocks first and then just get the active one from the last block that's been rendered.
+// TODO: No really. This is really very terrible.
 var setupTallyBoard = function(currentVal, totalVal, tallyId, allowEdit) {
   var max = totalVal || currentVal;
   var tallyBlockTemplate = document.querySelector('#tally_block_template');
@@ -28,8 +31,6 @@ var setupTallyBoard = function(currentVal, totalVal, tallyId, allowEdit) {
     talliesContainerEl.appendChild(tallyClone);
   }
   // now set up the strokes
-  // TODO: Refactor this. Instead of iterating through all strokes, render the correct number of
-  // blocks first and then just get the active one from the last block that's been rendered.
   var allTallyStrokes = document.querySelectorAll('#tallies .tally-stroke');
   for (i=0; i < allTallyStrokes.length; i++) {
     var currentTallyStroke = allTallyStrokes[i];
@@ -59,11 +60,13 @@ var setupTallyBoard = function(currentVal, totalVal, tallyId, allowEdit) {
       currentTallyStroke.classList.add('tally-stroke-waiting');
     }
   }
-  if (currentVal === 0 && totalVal === 0) {
-    activeBlock = currentTallyParent;
-  }
   // now make the last one/block clickable
   if (allowEdit) {
+    if (currentVal === 0 && totalVal === 0) {
+      activeBlock = currentTallyParent;
+    } else if (currentVal === 0) {
+      activeBlock = document.querySelectorAll('.tally-block')[0];
+    }
     activeBlock.classList.add('active');
     activeBlock.addEventListener('click', function(ev) {
       ev.preventDefault();
