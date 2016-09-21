@@ -21,8 +21,8 @@ var setupTallyBoard = function(currentVal, totalVal, tallyId, allowEdit) {
   talliesContainerEl.innerHTML = '';
   var numberOfTallies = Math.ceil(max/5) || 1;
   console.log('max', max, 'numberOfTallies', numberOfTallies, "currentVal", currentVal, "totalVal", totalVal);
-  var tallyClone = tallyBlockTemplate.cloneNode(true);
   for (var i=0; i < numberOfTallies; i++) {
+    var tallyClone = tallyBlockTemplate.cloneNode(true);
     tallyClone.id = '';
     tallyClone.classList.remove('hide');
     talliesContainerEl.appendChild(tallyClone);
@@ -71,10 +71,10 @@ var setupTallyBoard = function(currentVal, totalVal, tallyId, allowEdit) {
       updates['tallies/' + tallyId + '/tally_current'] = parseInt(currentVal, 10) + 1;
       firebase.database().ref().update(updates);
     });
-    document.querySelector('#tally_edit a').setAttribute('href', tallyId + '/edit');
-    document.querySelector('#tally_edit').classList.remove('hidden');
+    document.querySelector('#tally_edit a').setAttribute('href', '/tallies/' + tallyId + '/edit');
+    document.querySelector('#tally_edit').classList.remove('hide');
   } else {
-    document.querySelector('#tally_edit').classList.add('hidden');
+    document.querySelector('#tally_edit').classList.add('hide');
   }
 };
 

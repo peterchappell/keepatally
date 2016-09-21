@@ -8,7 +8,6 @@ var setFormVals = function(tallyId) {
     thisTallyRef.on('value', function(thisTallySnapshot) {
       var thisTallyData = thisTallySnapshot.val();
       document.querySelector('#create-title').value = thisTallyData.title;
-      document.querySelector('#create-title').value = thisTallyData.title;
       document.querySelector('#create-current-tally').value = thisTallyData.tally_current;
       document.querySelector('#create-total-tally').value = thisTallyData.tally_total;
     });
@@ -16,9 +15,8 @@ var setFormVals = function(tallyId) {
     document.querySelector('#form_title').textContent = 'Create a new tally';
     document.querySelector('#tally-id').value = "";
     document.querySelector('#create-title').value = "";
-    document.querySelector('#create-title').value = "";
-    document.querySelector('#create-current-tally').value = "";
-    document.querySelector('#create-total-tally').value = "";
+    document.querySelector('#create-current-tally').value = "0";
+    document.querySelector('#create-total-tally').value = "0";
   }
 };
 

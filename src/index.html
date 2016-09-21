@@ -11,57 +11,77 @@
     </head>
     <body>
         <section class="main">
-          <header>
-            <h1><a href="/">Tally it up</a></h1>
+          <header class="banner">
+            <h1><a href="/">Keep a tally</a></h1>
+            <div id="userNav" class="user-nav">
+              <a href="/signin" id="signInButton" class="signin">Sign in</a>
+            </div>
             <nav>
-              <a href="/signin" id="signInButton">Sign in</a>
-              <a href="/tallies">My tallies</a>
               <a href="/create">New tally</a>
+              <a href="/tallies">My tallies</a>
             </nav>
           </header>
 
-          <section id="welcome">
+          <section id="welcome" class="panel">
             <header>
-              <h1>Do you want to keep a tally of something?</h1>
+              <h1>Good reasons to keep a tally...</h1>
             </header>
-            <a href="/create">Create a tally board</a>
+            <ol class="welcome-points">
+              <li>
+                <p>
+                  The number 1 reason is of course... <strong>to be like Rey!</strong>
+                </p>
+                <img src="/images/star-wars-tally.gif" />
+              </li>
+              <li>
+                Track how many days you've not been smoking.
+              </li>
+              <li>
+                Keep a swear jar!
+              </li>
+            </ol>
+            <a href="/create" class="button">Create a tally board</a>
           </section>
 
-          <section id="form" class="hide">
+          <section id="form" class="hide panel">
             <header>
               <h1 id="form_title">Create a new tally</h1>
             </header>
-            <div id="create_form" class="form">
+            <div id="create_form">
               <form>
-                <input type="hidden" id="tally-id" value="" />
-                <div class="form-row">
-                  <label for="create-title">Title</label>
-                  <input id="create-title"/>
-                </div>
-                <div class="form-row">
-                  <label for="create-current-tally">Current tally</label>
-                  <input type="number" id="create-current-tally" />
-                </div>
-                <div class="form-row">
-                  <label for="create-total-tally">Total</label>
-                  <input id="create-total-tally" type="number" />
+                <div class="form">
+                  <input type="hidden" id="tally-id" value="" />
+                  <div class="form-row">
+                    <label for="create-title" class="form-label">Title</label>
+                    <input id="create-title" class="tally-title" placeholder="Tally of things..."/>
+                  </div>
+                  <div class="form-row">
+                    <label for="create-current-tally" class="form-label">Current tally</label>
+                    <input type="number" id="create-current-tally" />
+                    <span class="form-help">(Use this to set the current tally if you're not starting from zero).</span>
+                  </div>
+                  <div class="form-row">
+                    <label for="create-total-tally" class="form-label">Total</label>
+                    <input id="create-total-tally" type="number" />
+                    <span class="form-help">(Use this to set a goal - if you know how many things you want to get to).</span>
+                  </div>
                 </div>
                 <button type="submit">Save</button>
               </form>
             </div>
           </section>
 
-          <section id="show">
+          <section id="show" class="panel hide">
             <header>
-              <h1 id="tally_title"></h1>
-              <nav id="tally_edit" class="hidden"><a href="edit">Edit</a></nav>
+              <h1 id="tally_title" class="tally-title"></h1>
+              <nav id="tally_edit" class="hide tally-edit"><a href="edit">Edit</a></nav>
             </header>
-            <div id="tallies">
+            <div id="tallies" class="show-tally">
 
             </div>
           </section>
 
-          <section id="signIn">
+          <section id="signIn" class="panel hide">
             <header>
               <h1>Sign in</h1>
             </header>
@@ -70,7 +90,7 @@
             <button class="signOut">Sign out</button>
           </section>
 
-          <section id="talliesList">
+          <section id="talliesList" class="panel hide">
             <header>
               <h1>My tallies</h1>
             </header>

@@ -1,0 +1,28 @@
+@import "./variables";
+
+.banner {
+  background-color: $clr-primary;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+  overflow: hidden;
+  padding: 0.5em 1em;
+  h1 {
+    float: left;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 28px;
+    margin: 0;
+  }
+  nav {
+    float: right;
+    line-height: 28px;
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .user-nav {
+    float: right;
+    line-height: 28px;
+    margin: 0 0 0 2em;
+  }
+}

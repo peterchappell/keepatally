@@ -1,0 +1,25 @@
+.form-row {
+  margin: 0 0 0.5em;
+}
+.form-label {
+  display: block;
+  font-size: 0.8em;
+}
+.form {
+  margin-bottom: 2em;
+  input {
+    background-color: #fff;
+    border: none;
+    font-size: 24px;
+    margin: 0.25em 0;
+    padding: 0.5em;
+    width: 100px;
+  }
+  .tally-title {
+    width: 90%;
+  }
+}
+.form-help {
+  color: #90A4AE;
+  font-style: italic;
+}

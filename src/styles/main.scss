@@ -1,11 +1,32 @@
 @import "../../node_modules/normalize-scss/sass/normalize";
 @include normalize();
 
-$stroke-not-set: #f5f5f5;
-$stroke-set: #666;
+@import "./variables";
+@import "./banner";
+@import "./panel";
+@import "./welcome";
+@import "./form";
+@import "./show";
 
 body {
-  padding: 20px;
+  background-color: #ECEFF1;
+  color: #263238;
+  margin: 0;
+}
+
+h1 {
+  color: #455A64;
+  font-size: 28px;
+  font-weight: normal;
+}
+
+button, .button, a.button {
+  background-color: #455A64;
+  border: none;
+  color: #fff;
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
 }
 
 .hide {
@@ -31,8 +52,4 @@ body {
 
 .active {
   cursor: pointer;
-}
-
-.hidden {
-  display: none;
 }
