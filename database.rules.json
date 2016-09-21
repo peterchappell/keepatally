@@ -1,0 +1,11 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    "tallies": {
+      ".indexOn": ["owner_id"],
+      "$tally_id": {
+    	  ".write": "root.child('tallies/'+$tally_id+'/owner_id').val() === auth.uid || !data.exists()"
+      }
+    }
+  }
+}

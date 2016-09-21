@@ -1,0 +1,38 @@
+@import "../../node_modules/normalize-scss/sass/normalize";
+@include normalize();
+
+$stroke-not-set: #f5f5f5;
+$stroke-set: #666;
+
+body {
+  padding: 20px;
+}
+
+.hide {
+  display: none;
+}
+
+.tally-block {
+  margin: 0 10px 20px 0;
+  width: 140px;
+}
+
+.tally-stroke {
+  fill: none;
+}
+
+.tally-stroke-waiting {
+  fill: $stroke-not-set;
+}
+
+.tally-stroke-stroked {
+  fill: $stroke-set;
+}
+
+.active {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
