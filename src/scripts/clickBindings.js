@@ -1,7 +1,6 @@
 var firebase = require("firebase/app");
 
-module.exports = (function(router) {
-  var signInAnonymously = require('./signInAnonymously');
+module.exports = function(router) {
 
   /* trap clicks */
   for (let el of document.querySelectorAll('a')) {
@@ -25,4 +24,4 @@ module.exports = (function(router) {
     });
   }
 
-});
+};

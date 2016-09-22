@@ -24,8 +24,8 @@ var setupTallyBoard = function(currentVal, totalVal, tallyId, allowEdit) {
   talliesContainerEl.innerHTML = '';
   var numberOfTallies = Math.ceil(max/5) || 1;
   console.log('max', max, 'numberOfTallies', numberOfTallies, "currentVal", currentVal, "totalVal", totalVal);
+  var tallyClone = tallyBlockTemplate.cloneNode(true);
   for (var i=0; i < numberOfTallies; i++) {
-    var tallyClone = tallyBlockTemplate.cloneNode(true);
     tallyClone.id = '';
     tallyClone.classList.remove('hide');
     talliesContainerEl.appendChild(tallyClone);

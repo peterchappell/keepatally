@@ -1,6 +1,6 @@
 var firebase = require("firebase/app");
 
-module.exports = (function(router) {
+module.exports = function(router) {
 
   /* handle creating */
   document.querySelector('#create_form').addEventListener('submit', function(ev) {
@@ -30,4 +30,4 @@ module.exports = (function(router) {
     );
   });
 
-});
+};
