@@ -18,11 +18,9 @@ export default React.createClass({
         <Route path="/" component={App}>
           <IndexRoute component={Welcome}/>
           <Route path="/create" component={Create}/>
-          <Route path="/tallies" component={Tallies}>
-            <Route path="/tallies/:tallyId" component={Tally}>
-              <Route path="/tallies/:tallyId/edit" component={EditTally} />
-            </Route>
-          </Route>
+          <Route path="/tallies" component={Tallies} />
+          <Route path="/tallies/:tallyId" component={Tally} />
+          <Route path="/tallies/:tallyId/edit" component={EditTally} />
           <Route path="/signin" component={SignIn} />
           <Route path="/signout" component={SignOut} />
         </Route>

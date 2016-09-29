@@ -1,9 +1,8 @@
 import React from 'react'
 import firebase from 'firebase/app'
-import 'firebase/database';
 
 //components
-import TallyList from './TallyList'
+import TalliesList from './TalliesList'
 
 export default React.createClass({
   contextTypes: {
@@ -39,7 +38,7 @@ export default React.createClass({
         <header>
           <h1>My tallies</h1>
         </header>
-        <TallyList tallies={this.state.tallies} loaded={this.state.loaded} />
+        <TalliesList tallies={this.state.tallies} loaded={this.state.loaded} />
       </section>
     )
   }
