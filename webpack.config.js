@@ -24,6 +24,10 @@ module.exports = {
       {
         test: /\.(jpg|png|gif)$/,
         loader: 'file-loader?name=/images/[name].[hash].[ext]'
+      },
+      {
+        test: /\.html$/,
+        loader: 'file-loader?name=/[name].[ext]'
       }
     ]
   },

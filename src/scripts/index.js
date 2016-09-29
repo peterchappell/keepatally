@@ -1,5 +1,5 @@
 // pull the index.html file with webpack and use this in it
-require('file?name=./public/index.html!../index.html')
+require('../index.html')
 
 // libraries
 import React from 'react'
