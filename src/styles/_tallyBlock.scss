@@ -1,0 +1,40 @@
+@import "./variables";
+
+.tally-block {
+  margin: 0 10px 20px 0;
+  width: 140px;
+}
+
+.tally-block-complete {
+  .tally-stroke {
+    fill: $stroke-set;
+  }
+}
+
+.tally-block-waiting {
+  .tally-stroke {
+    fill: $stroke-not-set;
+  }
+}
+
+.tally-block-partial {
+  .tally-stroke {
+    fill: none;
+  }
+}
+
+.tally-stroke-complete {
+  fill: $stroke-set;
+}
+
+// .tally-stroke {
+//   fill: none;
+// }
+//
+// .tally-stroke-waiting {
+//   fill: $stroke-not-set;
+// }
+//
+// .tally-stroke-stroked {
+//   fill: $stroke-set;
+// }

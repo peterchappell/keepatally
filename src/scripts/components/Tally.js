@@ -21,14 +21,9 @@ export default React.createClass({
     console.log('getting for', this.props.params.tallyId);
     var thisTallyRef = firebase.database().ref('tallies/' + this.props.params.tallyId);
     this.bindAsObject(thisTallyRef, "tallyData");
-    // thisTallyRef.on('value', (thisTallySnapshot) => {
-    //   this.setState({
-    //     tallyData: thisTallySnapshot.val()
-    //   })
-    //   console.log('tallyData', this.state.tallyData)
-    // });
   },
   render() {
+    console.log('tally data', {'total': this.state.tallyData.tally_total, 'count': this.state.tallyData.tally_current})
     return (
       <section className="panel">
         <header>
@@ -36,7 +31,7 @@ export default React.createClass({
           <nav className="tally-edit"><Link to="edit">Edit</Link></nav>
         </header>
         <div className="show-tally">
-          <TallyBlocks total={this.state.tallyData.tally_total} count={this.state.tallyData.tally_current} />
+          <TallyBlocks total={parseInt(this.state.tallyData.tally_total, 10)} count={parseInt(this.state.tallyData.tally_current, 10)} />
         </div>
       </section>
     )

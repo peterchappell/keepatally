@@ -1,6 +1,12 @@
 import React from 'react'
 
 export default React.createClass({
+  getDefaultProps() {
+    return {
+      strokesCompleted: 0,
+      strokesWaiting: 0
+    }
+  },
   render() {
     return (
       <svg viewBox="0 0 300 200" className="tally-block">

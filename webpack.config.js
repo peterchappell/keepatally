@@ -35,7 +35,7 @@ module.exports = {
     outputStyle: "compact"
   },
   plugins: [
-    new ExtractTextPlugin('public/styles/main2.css', {
+    new ExtractTextPlugin('../public/styles/main2.css', {
         allChunks: true
     })
   ]
