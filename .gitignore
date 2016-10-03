@@ -6,3 +6,4 @@ npm-debug.log
 firebase-debug.log
 .babelrc
 .eslintrc.json
+__snapshots__

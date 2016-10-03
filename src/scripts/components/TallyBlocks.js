@@ -1,4 +1,5 @@
 import React from 'react'
+import getStrokesArrayForBlock from '../helpers/getStrokesArrayForBlock'
 
 // components
 import TallyBlock from './TallyBlock'
@@ -11,17 +12,7 @@ export default React.createClass({
     }
   },
   getStrokesArray(blockIndex) {
-    var emptyStrokeFlag = 0
-    var completedStrokeFlag = 1
-    var waitingStrokeFlag = -1
-    var tallyBlockStrokesArray = Array(5).fill(0);
-    var totalCountForBlock = (blockIndex+1)*5
-    if (this.props.count && this.props.count > totalCountForBlock) {
-      return tallyBlockStrokesArray.fill(completedStrokeFlag);
-    }
-    if (this.props.total && this.props.total > totalCountForBlock) {
-      return tallyBlockStrokesArray.fill(waitingStrokeFlag);
-    }
+    getStrokesArrayForBlock(blockIndex, this.props.count, this.props.total)
   },
   getTallyBlocks() {
     var numTallyBlocks = Math.ceil(Math.max(this.props.total, this.props.count)/5)
