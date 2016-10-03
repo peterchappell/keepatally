@@ -12,32 +12,13 @@ export default React.createClass({
     }
   },
   getStrokesArray(blockIndex) {
-    getStrokesArrayForBlock(blockIndex, this.props.count, this.props.total)
+    return getStrokesArrayForBlock(blockIndex, this.props.count, this.props.total)
   },
   getTallyBlocks() {
     var numTallyBlocks = Math.ceil(Math.max(this.props.total, this.props.count)/5)
     var tallyBlocks = []
     var blockStrokesArray = []
     for (var i = 0; i < numTallyBlocks; i++) {
-
-
-      // tallyBlockCompleteStrokes = 0
-      // tallyBlockWaitingStrokes = 0
-      // if (i < numTallyBlocksComplete) {
-      //   tallyBlockCompleteStrokes = 5
-      // } else if (i = numTallyBlocksComplete){
-      //   tallyBlockCompleteStrokes = 2
-      // }
-
-      // if (i < numTallyBlocksComplete) {
-      //   tallyBlockCompleteStrokes = 5
-      //   tallyBlockWaitingStrokes = 5
-      // } else if (i > numTallyBlocksComplete && i < numTallyBlocks) {
-      //   tallyBlockCompleteStrokes = 0
-      //   tallyBlockWaitingStrokes = 5
-      // } else {
-      //   tallyBlockType = 'partial'
-      // }
       blockStrokesArray = this.getStrokesArray(i)
       tallyBlocks.push(<TallyBlock key={'tally_' + i} strokesArray={blockStrokesArray} />)
     }

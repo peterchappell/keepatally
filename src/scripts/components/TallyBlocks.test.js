@@ -9,5 +9,4 @@ it('sets the stroke array correctly', () => {
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
-
 });

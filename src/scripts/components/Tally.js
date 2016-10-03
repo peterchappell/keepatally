@@ -18,12 +18,10 @@ export default React.createClass({
     };
   },
   componentWillMount() {
-    console.log('getting for', this.props.params.tallyId);
     var thisTallyRef = firebase.database().ref('tallies/' + this.props.params.tallyId);
     this.bindAsObject(thisTallyRef, "tallyData");
   },
   render() {
-    console.log('tally data', {'total': this.state.tallyData.tally_total, 'count': this.state.tallyData.tally_current})
     return (
       <section className="panel">
         <header>
