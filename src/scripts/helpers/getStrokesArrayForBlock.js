@@ -3,7 +3,6 @@ import FLAGS from '../consts/tallyStrokeFlags'
 const getStrokes = function(blockIndex, count, total) {
   var strokesArray = Array(5).fill(FLAGS.empty);
   var totalCountForBlock = (blockIndex+1)*5
-  console.log(blockIndex, count, total, totalCountForBlock)
   if (count && count >= totalCountForBlock) {
     return strokesArray.fill(FLAGS.complete)
   }

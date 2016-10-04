@@ -5,6 +5,10 @@
   width: 140px;
 }
 
+.tally-block-active {
+  cursor: pointer;
+}
+
 .tally-stroke-complete {
   fill: $stroke-set;
 }
