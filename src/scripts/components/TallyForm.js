@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, browserHistory } from 'react-router'
+import { browserHistory } from 'react-router'
 import firebase from 'firebase/app'
 import ReactFireMixin from 'reactfire'
 
@@ -24,36 +24,36 @@ export default React.createClass({
     }
   },
   handleValueChange(event) {
-    var stateUpdate = {};
+    var stateUpdate = {}
     stateUpdate[event.target.name] = event.target.value
-    this.setState(stateUpdate);
+    this.setState(stateUpdate)
   },
   handleSubmit(event) {
     var tallyKey
     var dbUpdates
     event.preventDefault()
     if (!this.props.tallyId) {
-      tallyKey = firebase.database().ref().child('tallies').push().key;
+      tallyKey = firebase.database().ref().child('tallies').push().key
     } else {
       tallyKey = this.props.tallyId
     }
-    dbUpdates = {};
+    dbUpdates = {}
     dbUpdates['/tallies/' + tallyKey] = {
-      "title": this.state.title,
-      "tally_current": this.state.tally_current,
-      "tally_total": this.state.tally_total,
-      "owner_id": this.props.userId,
-      "shared_with": {} // TODO: Allow for sharing
-    };
+      'title': this.state.title,
+      'tally_current': this.state.tally_current,
+      'tally_total': this.state.tally_total,
+      'owner_id': this.props.userId,
+      'shared_with': {} // TODO: Allow for sharing
+    }
     firebase.database().ref().update(dbUpdates).then(
-      function(resolved) {
+      function() {
         browserHistory.replace('/tallies/' + tallyKey)
       },
       function(rejected) {
         // TODO: Handle errors better
-        console.log('ERROR: There was a problem creating that tally...', rejected);
+        console.error('ERROR: There was a problem creating that tally...', rejected)
       }
-    );
+    )
   },
   render() {
     return (

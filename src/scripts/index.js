@@ -4,19 +4,18 @@ require('../index.html')
 // libraries
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 
 // config for Firebase
 import firebase from 'firebase/app'
-import 'firebase/database';
+import 'firebase/database'
 var config = {
-  apiKey: "AIzaSyApc0Mt7k0FCncn8k0DYfI3q9FV2OeSXAo",
-  authDomain: "keepatally.firebaseapp.com",
-  databaseURL: "https://keepatally.firebaseio.com",
-  storageBucket: "",
-  messagingSenderId: "1062744934959"
-};
-firebase.initializeApp(config);
+  apiKey: 'AIzaSyApc0Mt7k0FCncn8k0DYfI3q9FV2OeSXAo',
+  authDomain: 'keepatally.firebaseapp.com',
+  databaseURL: 'https://keepatally.firebaseio.com',
+  storageBucket: '',
+  messagingSenderId: '1062744934959'
+}
+firebase.initializeApp(config)
 
 // components
 import Routes from './components/Routes'
@@ -25,4 +24,4 @@ import Routes from './components/Routes'
 ReactDOM.render(
   <Routes />,
   document.getElementById('app')
-);
+)

@@ -1,16 +1,15 @@
 import React from 'react'
 import firebase from 'firebase/app'
-import { Link } from 'react-router'
 
 export default React.createClass({
   handleGoogleSignIn(event) {
     event.preventDefault()
-    var provider = new firebase.auth.GoogleAuthProvider();
+    var provider = new firebase.auth.GoogleAuthProvider()
     firebase.auth().signOut().then(function() {
-      firebase.auth().signInWithRedirect(provider);
+      firebase.auth().signInWithRedirect(provider)
     }, function() {
-      firebase.auth().signInWithRedirect(provider);
-    });
+      firebase.auth().signInWithRedirect(provider)
+    })
   },
   render() {
     return (

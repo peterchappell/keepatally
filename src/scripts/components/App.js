@@ -21,20 +21,19 @@ export default React.createClass({
   signInAnonymously() {
     firebase.auth().signInAnonymously().catch((error) => {
       if (error) {
-        console.log('There was an error with anonymous authentication', error.code, error.message)
+        // TODO: Handle errors better
+        console.error('ERROR: There was an error with anonymous authentication', error.code, error.message)
       }
     })
   },
   setupFirebaseAuthListener() {
-    var thisApp = this;
     this.firebaseAuthListener = firebase.auth().onAuthStateChanged((user) => {
-      console.log('we have a user', user)
       if (user !== null) {
         this.setState({
           user: user
         })
       } else {
-        this.signInAnonymously();
+        this.signInAnonymously()
       }
     })
   },
@@ -53,8 +52,8 @@ export default React.createClass({
     this.setupFirebaseAuthListener()
   },
   componentWillUnmount() {
-    this.firebaseAuthListener && this.firebaseAuthListener();
-    this.firebaseAuthListener = undefined;
+    this.firebaseAuthListener && this.firebaseAuthListener()
+    this.firebaseAuthListener = undefined
   },
   render() {
     return (

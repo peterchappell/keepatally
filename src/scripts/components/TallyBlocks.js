@@ -33,7 +33,7 @@ export default React.createClass({
     return tallyBlocks
   },
   render() {
-    var tallyBlocksContent = this.getTallyBlocks();
+    var tallyBlocksContent = this.getTallyBlocks()
     if (!tallyBlocksContent.length) {
       tallyBlocksContent = <EmptyTally clickHandler={this.props.incrementActionHandler} isEditable={this.props.isEditable} />
     }

@@ -19,18 +19,18 @@ export default React.createClass({
         tally_current: 0,
         owner_id: null
       }
-    };
+    }
   },
   isEditable() {
     return this.context.user && !this.context.user.isAnonymous && this.context.user.uid === this.state.tallyData.owner_id
   },
   componentWillMount() {
-    this.tallyRef = firebase.database().ref('tallies/' + this.props.params.tallyId);
-    this.bindAsObject(this.tallyRef, "tallyData");
+    this.tallyRef = firebase.database().ref('tallies/' + this.props.params.tallyId)
+    this.bindAsObject(this.tallyRef, 'tallyData')
   },
   incrementCount() {
-    var updates = {};
-    var tallyCountRef = 'tallies/' + this.props.params.tallyId + '/tally_current';
+    var updates = {}
+    var tallyCountRef = 'tallies/' + this.props.params.tallyId + '/tally_current'
     updates[tallyCountRef] = parseInt(this.state.tallyData.tally_current,10) + 1
     firebase.database().ref().update(updates)
   },

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, browserHistory } from 'react-router'
+import { browserHistory } from 'react-router'
 
 export default React.createClass({
   contextTypes: {
@@ -7,14 +7,13 @@ export default React.createClass({
   },
   redirectAnonUsers(user) {
     if (user && user.isAnonymous && user.uid !== 0) {
-      browserHistory.replace("/signin")
+      browserHistory.replace('/signin')
     }
   },
   componentWillReceiveProps(nextProps, nextContext) {
-    this.redirectAnonUsers(nextContext.user);
+    this.redirectAnonUsers(nextContext.user)
   },
   componentDidMount() {
-    console.log('maybe redirect', this.context.user)
     this.redirectAnonUsers(this.context.user)
   },
   render() {

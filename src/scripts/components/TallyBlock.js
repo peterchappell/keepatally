@@ -1,5 +1,4 @@
 import React from 'react'
-import firebase from 'firebase/app'
 import ReactFireMixin from 'reactfire'
 
 import FLAGS from '../consts/tallyStrokeFlags'
@@ -7,7 +6,7 @@ import FLAGS from '../consts/tallyStrokeFlags'
 export default React.createClass({
   mixins: [ReactFireMixin],
   getDefaultProps() {
-    const emptyArray = Array(5).fill(FLAGS.empty);
+    const emptyArray = Array(5).fill(FLAGS.empty)
     return {
       strokesArray: emptyArray,
       isActive: false,

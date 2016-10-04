@@ -1,6 +1,8 @@
+/*eslint-env node*/
+
 import React from 'react'
 
-const ArrowSVG = require('babel!svg-react!../../images/arrow.svg?name=ArrowSVG');
+const ArrowSVG = require('babel!svg-react!../../images/arrow.svg?name=ArrowSVG')
 
 export default React.createClass({
   getDefaultProps() {

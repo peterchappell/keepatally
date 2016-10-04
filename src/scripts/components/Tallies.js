@@ -13,25 +13,25 @@ export default React.createClass({
     return {
       tallies: {},
       loaded: false
-    };
+    }
   },
   getTalliesForUser(user) {
     if (user && !user.isAnonymous) {
-      var talliesRef = firebase.database().ref('tallies').orderByChild("owner_id").equalTo(user.uid);
+      var talliesRef = firebase.database().ref('tallies').orderByChild('owner_id').equalTo(user.uid)
       talliesRef.once('value', (talliesSnapshot) => {
-        var tallyRecords = talliesSnapshot.val();
+        var tallyRecords = talliesSnapshot.val()
         this.setState({
           tallies: tallyRecords,
           loaded: true
-        });
-      });
+        })
+      })
     }
   },
   componentWillMount() {
-    this.getTalliesForUser(this.context.user);
+    this.getTalliesForUser(this.context.user)
   },
   componentWillReceiveProps(nextProps, nextContext) {
-    this.getTalliesForUser(nextContext.user);
+    this.getTalliesForUser(nextContext.user)
   },
   render() {
     var talliesListContent = (<div><p>You'll need to sign in to see the tallies you've created.</p><Link to='/signin' className='button'>Sign in</Link></div>)

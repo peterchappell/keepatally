@@ -19,9 +19,9 @@ export default React.createClass({
           title: this.props.tallies[key] && this.props.tallies[key].title
         }
       })
-      tallyNodes = talliesArray.map(function (tally, index) {
-        return <TalliesListItem key={tally.id} id={tally.id}>{tally.title}</TalliesListItem>;
-      });
+      tallyNodes = talliesArray.map(function (tally) {
+        return <TalliesListItem key={tally.id} id={tally.id}>{tally.title}</TalliesListItem>
+      })
     }
     return tallyNodes
   },
@@ -31,8 +31,8 @@ export default React.createClass({
     })
   },
   render() {
-    var listToRender;
-    var tallyNodesToRender = this.getTalliesNodes();
+    var listToRender
+    var tallyNodesToRender = this.getTalliesNodes()
     if (!this.props.loaded) {
       listToRender = (<p>Loading...</p>)
     } else if (tallyNodesToRender.length) {

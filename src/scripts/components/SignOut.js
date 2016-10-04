@@ -1,15 +1,15 @@
 import React from 'react'
-import { Link, IndexLink } from 'react-router'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 
 export default React.createClass({
   componentDidMount() {
     firebase.auth().signOut().then(function() {
-      location.href="/";
+      location.href = '/'
     }, function(error) {
-      console.log('There was an error signing out', error.code, error.message)
-    });
+      // TODO: Handle errors better
+      console.error('ERROR: There was an error signing out', error.code, error.message)
+    })
   },
   render() {
     return (

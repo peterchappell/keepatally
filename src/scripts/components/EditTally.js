@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router'
 import firebase from 'firebase/app'
 import ReactFireMixin from 'reactfire'
 
@@ -19,19 +18,19 @@ export default React.createClass({
         tally_current: 0,
         owner_id: null
       }
-    };
+    }
   },
   componentWillMount() {
-    this.tallyRef = firebase.database().ref('tallies/' + this.props.params.tallyId);
-    this.bindAsObject(this.tallyRef, "tallyData");
+    this.tallyRef = firebase.database().ref('tallies/' + this.props.params.tallyId)
+    this.bindAsObject(this.tallyRef, 'tallyData')
     this.setState({
       userId: this.context.user.uid
-    });
+    })
   },
   componentWillReceiveProps(nextProps, nextContext) {
     this.setState({
       userId: nextContext.user.uid
-    });
+    })
   },
   render() {
     return (

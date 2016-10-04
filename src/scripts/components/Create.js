@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link, IndexLink } from 'react-router'
 
 // components
 import TallyForm from './TallyForm'
@@ -11,17 +10,17 @@ export default React.createClass({
   getInitialState() {
     return {
       userId: null
-    };
+    }
   },
   componentWillMount() {
     this.setState({
       userId: this.context.user.uid
-    });
+    })
   },
   componentWillReceiveProps(nextProps, nextContext) {
     this.setState({
       userId: nextContext.user.uid
-    });
+    })
   },
   render() {
     return (

@@ -1,10 +1,9 @@
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry: {
     styles: './src/styles/main.scss',
-    script: './src/scripts/index.js',
-    script_old: './src/scripts/main.js'
+    script: './src/scripts/index.js'
   },
   output: {
     path: 'public/',
@@ -36,11 +35,11 @@ module.exports = {
     ]
   },
   sassLoader: {
-    outputStyle: "compact"
+    outputStyle: 'compact'
   },
   plugins: [
     new ExtractTextPlugin('../public/styles/main2.css', {
         allChunks: true
     })
   ]
-};
+}

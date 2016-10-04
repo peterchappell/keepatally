@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link, IndexLink } from 'react-router'
+import { Link } from 'react-router'
 
-const rae_image_src = require('../../images/star-wars-tally.gif');
+const rae_image_src = require('../../images/star-wars-tally.gif')
 
 export default React.createClass({
   render() {

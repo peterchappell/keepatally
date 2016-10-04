@@ -6,7 +6,7 @@ const FLAGS = {
 
 const flagsReversed = {}
 for(var key in FLAGS){
-  flagsReversed[FLAGS[key]] = key;
+  flagsReversed[FLAGS[key]] = key
 }
 
 FLAGS['REVERSED'] = flagsReversed
