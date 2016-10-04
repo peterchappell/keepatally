@@ -3,6 +3,7 @@ import getStrokesArrayForBlock from '../helpers/getStrokesArrayForBlock'
 
 // components
 import TallyBlock from './TallyBlock'
+import EmptyTally from './EmptyTally'
 
 export default React.createClass({
   getDefaultProps() {
@@ -34,7 +35,7 @@ export default React.createClass({
   render() {
     var tallyBlocksContent = this.getTallyBlocks();
     if (!tallyBlocksContent.length) {
-      tallyBlocksContent = 'TODO: Message to encourage user to make the first mark...'
+      tallyBlocksContent = <EmptyTally clickHandler={this.props.incrementActionHandler} isEditable={this.props.isEditable} />
     }
     return (
       <div>{tallyBlocksContent}</div>

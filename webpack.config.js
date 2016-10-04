@@ -28,6 +28,10 @@ module.exports = {
       {
         test: /\.html$/,
         loader: 'file-loader?name=/[name].[ext]'
+      },
+      {
+        test: /\.svg$/,
+        loader: 'babel?presets[]=es2015,presets[]=react!svg-react'
       }
     ]
   },

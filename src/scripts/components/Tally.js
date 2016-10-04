@@ -31,7 +31,7 @@ export default React.createClass({
   incrementCount() {
     var updates = {};
     var tallyCountRef = 'tallies/' + this.props.params.tallyId + '/tally_current';
-    updates[tallyCountRef] = this.state.tallyData.tally_current + 1
+    updates[tallyCountRef] = parseInt(this.state.tallyData.tally_current,10) + 1
     firebase.database().ref().update(updates)
   },
   render() {
