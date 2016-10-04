@@ -29,7 +29,6 @@ export default React.createClass({
     this.bindAsObject(this.tallyRef, "tallyData");
   },
   incrementCount() {
-    console.log('incrementing count...')
     var updates = {};
     var tallyCountRef = 'tallies/' + this.props.params.tallyId + '/tally_current';
     updates[tallyCountRef] = this.state.tallyData.tally_current + 1

@@ -67,6 +67,24 @@ describe('When the current tally block is only partially completed (and with a g
       FLAGS.waiting
     ])
   })
+  test('total count 21, current tally block index 4, goal 27', () => {
+    expect(getStrokes(4, 21, 27)).toEqual([
+      FLAGS.complete,
+      FLAGS.waiting,
+      FLAGS.waiting,
+      FLAGS.waiting,
+      FLAGS.waiting
+    ])
+  })
+  test('total count 21, current tally block index 5, goal 27', () => {
+    expect(getStrokes(5, 21, 27)).toEqual([
+      FLAGS.waiting,
+      FLAGS.waiting,
+      FLAGS.empty,
+      FLAGS.empty,
+      FLAGS.empty
+    ])
+  })
 })
 
 describe('When the last block is a mixture of waiting and empty', () => {
