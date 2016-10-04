@@ -1,0 +1,22 @@
+@import "./variables";
+
+.tally-block {
+  margin: 0 10px 20px 0;
+  width: 140px;
+}
+
+.tally-block-active {
+  cursor: pointer;
+}
+
+.tally-stroke-complete {
+  fill: $stroke-set;
+}
+
+.tally-stroke-empty {
+  fill: none;
+}
+
+.tally-stroke-waiting {
+  fill: $stroke-not-set;
+}

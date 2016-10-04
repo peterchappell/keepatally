@@ -3,3 +3,7 @@
 public
 node_modules
 npm-debug.log
+firebase-debug.log
+.babelrc
+__snapshots__
+.eslintcache

@@ -7,6 +7,8 @@
 @import "./welcome";
 @import "./form";
 @import "./show";
+@import "./tallyBlock";
+@import "./firstMark";
 
 body {
   background-color: #ECEFF1;
@@ -31,23 +33,6 @@ button, .button, a.button {
 
 .hide {
   display: none;
-}
-
-.tally-block {
-  margin: 0 10px 20px 0;
-  width: 140px;
-}
-
-.tally-stroke {
-  fill: none;
-}
-
-.tally-stroke-waiting {
-  fill: $stroke-not-set;
-}
-
-.tally-stroke-stroked {
-  fill: $stroke-set;
 }
 
 .active {

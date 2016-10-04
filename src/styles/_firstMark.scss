@@ -1,0 +1,16 @@
+@import "./variables";
+
+.makeFirstMark {
+  cursor: pointer;
+  padding: 1em 0;
+  .arrow {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: -2em;
+    fill: $stroke-not-set;
+  }
+  p {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
