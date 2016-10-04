@@ -1,5 +1,6 @@
 import React from 'react'
 import firebase from 'firebase/app'
+import { Link } from 'react-router'
 
 //components
 import TalliesList from './TalliesList'
@@ -33,12 +34,16 @@ export default React.createClass({
     this.getTalliesForUser(nextContext.user);
   },
   render() {
+    var talliesListContent = (<div><p>You'll need to sign in to see the tallies you've created.</p><Link to='/signin' className='button'>Sign in</Link></div>)
+    if (this.context.user && !this.context.user.isAnonymous) {
+      talliesListContent = <TalliesList tallies={this.state.tallies} loaded={this.state.loaded} />
+    }
     return (
       <section className="panel">
         <header>
           <h1>My tallies</h1>
         </header>
-        <TalliesList tallies={this.state.tallies} loaded={this.state.loaded} />
+        {talliesListContent}
       </section>
     )
   }

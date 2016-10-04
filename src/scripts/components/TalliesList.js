@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 //components
 import TalliesListItem from './TalliesListItem'
@@ -37,7 +38,7 @@ export default React.createClass({
     } else if (tallyNodesToRender.length) {
       listToRender = (<ul>{tallyNodesToRender}</ul>)
     } else {
-      listToRender = (<p>You don't have any tallies yet. Maybe you should create one!</p>)
+      listToRender = (<div><p>You don't have any tallies yet. Maybe you should create one!</p><Link to='/create' className='button'>New Tally</Link></div>)
     }
     return (
       <div className={this.state.loaded?null:'hide'}>{listToRender}</div>
