@@ -12,7 +12,7 @@ const getStrokes = function(blockIndex, count, total) {
   if (total && blockIndex+1 < Math.ceil(total/5) && blockIndex+1 > Math.ceil(count/5)) {
     return strokesArray
   }
-  if (total) {
+  if (total && total > totalCountForBlock - 5) {
     strokesArray.fill(FLAGS.waiting,0,5-(totalCountForBlock-total))
   }
   if (count && count > totalCountForBlock - 5) {

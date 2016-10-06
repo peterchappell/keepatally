@@ -61,17 +61,16 @@ export default React.createClass({
         <div className="form">
           <div className="form-row">
             <label htmlFor="tally-form-title" className="form-label">Title</label>
-            <input name="title" id="tally-form-title" className="tally-title" placeholder="Tally of things..." value={this.state.title} onChange={this.handleValueChange} />
+            <input name="title" id="tally-form-title" required className="tally-title" placeholder="Tally of things..." value={this.state.title} onChange={this.handleValueChange} />
           </div>
           <div className="form-row">
             <label htmlFor="tally-form-count" className="form-label">Current tally</label>
-            <input type="number" id="tally-form-count" name="tally_current" placeholder="0" value={parseInt(this.state.tally_current,10)} onChange={this.handleValueChange}/>
-            <span className="form-help">(Use this to set the current tally if you're not starting from zero).</span>
+            <input type="number" min="0" required id="tally-form-count" name="tally_current" placeholder="0" value={parseInt(this.state.tally_current,10)} onChange={this.handleValueChange}/>
           </div>
           <div className="form-row">
             <label htmlFor="tally-form-total" className="form-label">Goal</label>
-            <input name="tally_total" id="tally-form-total" type="number" placeholder="∞" value={parseInt(this.state.tally_total,10)} onChange={this.handleValueChange} />
-            <span className="form-help">(Use this to set a goal - if you know how many things you want to get to).</span>
+            <input name="tally_total" min="0" required id="tally-form-total" type="number" placeholder="∞" value={parseInt(this.state.tally_total,10)} onChange={this.handleValueChange} />
+            <p className="form-help">Hint: You can set a goal if you want to tally a known number of things. Otherwise just set the goal to zero.</p>
           </div>
         </div>
         <button type="submit">Save</button>

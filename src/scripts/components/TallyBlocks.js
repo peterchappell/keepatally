@@ -21,10 +21,15 @@ export default React.createClass({
     return this.props.isEditable && this.props.count >= blockIndex * 5 && this.props.count < (blockIndex + 1) * 5
   },
   getTallyBlocks() {
-    var numTallyBlocks = Math.ceil(Math.max(this.props.total, this.props.count)/5)
+    var maxVisibleStrokes = Math.max(this.props.total, this.props.count)
+    var numTallyBlocks = Math.ceil(maxVisibleStrokes/5)
     var tallyBlocks = []
     var blockStrokesArray = []
     var isActiveBlock
+    // add an extra block ready to be clicked when all tallies on board are complete
+    if (numTallyBlocks && this.props.count % 5 === 0 && maxVisibleStrokes % 5 === 0) {
+      numTallyBlocks += 1
+    }
     for (var i = 0; i < numTallyBlocks; i++) {
       blockStrokesArray = this.getStrokesArray(i)
       isActiveBlock = this.isThisBlockActive(i)

@@ -30,7 +30,6 @@ export default React.createClass({
     })
   },
   render() {
-    console.log('user for nav', this.state.user)
     var userNavLink = <Link to="/signin" className="signin">Sign in</Link>
     if (this.props.isLoggedIn) {
       userNavLink = (
