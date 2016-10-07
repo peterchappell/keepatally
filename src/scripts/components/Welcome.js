@@ -37,9 +37,9 @@ export default React.createClass({
         <aside className="sub-panel-2">
           <header><h2>How it works</h2></header>
           <ul>
-            <li>Sign in using your google account</li>
-            <li>Create a tally</li>
-            <li>Click or tap to create the next stroke</li>
+            <li><Link to="/signin">Sign in</Link> using your google account</li>
+            <li><Link to="/create">Create a tally</Link></li>
+            <li>Click or tap to add the next stroke</li>
             <li>Share your tally with anyone - others can view your tally but only you can increase or edit it</li>
           </ul>
         </aside>
