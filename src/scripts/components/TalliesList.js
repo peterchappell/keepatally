@@ -16,11 +16,14 @@ export default React.createClass({
       let talliesArray = Object.keys(this.props.tallies).map((key) => {
         return {
           id: key,
-          title: this.props.tallies[key] && this.props.tallies[key].title
+          title: this.props.tallies[key] && this.props.tallies[key].title,
+          count: this.props.tallies[key] && this.props.tallies[key].tally_current,
+          total: this.props.tallies[key] && this.props.tallies[key].tally_total
         }
       })
+      console.log('talliesArray', talliesArray)
       tallyNodes = talliesArray.map(function (tally) {
-        return <TalliesListItem key={tally.id} id={tally.id}>{tally.title}</TalliesListItem>
+        return <TalliesListItem key={tally.id} id={tally.id} count={tally.count} total={tally.total}>{tally.title}</TalliesListItem>
       })
     }
     return tallyNodes
@@ -36,7 +39,7 @@ export default React.createClass({
     if (!this.props.loaded) {
       listToRender = (<p>Loading...</p>)
     } else if (tallyNodesToRender.length) {
-      listToRender = (<ul>{tallyNodesToRender}</ul>)
+      listToRender = (<div>{tallyNodesToRender}</div>)
     } else {
       listToRender = (<div><p>You don't have any tallies yet. Maybe you should create one!</p><Link to='/create' className='button'>New Tally</Link></div>)
     }

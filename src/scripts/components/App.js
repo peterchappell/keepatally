@@ -6,6 +6,10 @@ import 'firebase/auth'
 // components
 import UserNav from './UserNav'
 
+const LogoSVG = require('babel!svg-react!../../images/keep-a-tally.svg?name=LogoSVG')
+const CreateIcon = require('babel!svg-react!../../images/icon-create.svg?name=CreateIcon')
+const ListIcon = require('babel!svg-react!../../images/icon-list.svg?name=ListIcon')
+
 export default React.createClass({
   childContextTypes: {
     user: React.PropTypes.object
@@ -59,11 +63,11 @@ export default React.createClass({
     return (
       <section className="main">
         <header className="banner">
-          <h1><Link to="/">Keep a tally</Link></h1>
+          <h1><Link to="/"><LogoSVG className="logo" /></Link></h1>
           <UserNav isLoggedIn = {!this.state.user.isAnonymous} />
           <nav>
-            <Link to="/create">New tally</Link>
-            <Link to="/tallies">My tallies</Link>
+            <Link to="/create"><CreateIcon className="icon" /><span className="text">Create</span></Link>
+            <Link to="/tallies"><ListIcon className="icon" /><span className="text">List</span></Link>
           </nav>
         </header>
 

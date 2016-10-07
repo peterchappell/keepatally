@@ -65,11 +65,11 @@ export default React.createClass({
           </div>
           <div className="form-row">
             <label htmlFor="tally-form-count" className="form-label">Current tally</label>
-            <input type="number" min="0" required id="tally-form-count" name="tally_current" placeholder="0" value={parseInt(this.state.tally_current,10)} onChange={this.handleValueChange}/>
+            <input type="number" min="0" max="10000" required id="tally-form-count" name="tally_current" placeholder="0" value={parseInt(this.state.tally_current,10)} onChange={this.handleValueChange}/>
           </div>
           <div className="form-row">
             <label htmlFor="tally-form-total" className="form-label">Goal</label>
-            <input name="tally_total" min="0" required id="tally-form-total" type="number" placeholder="∞" value={parseInt(this.state.tally_total,10)} onChange={this.handleValueChange} />
+            <input name="tally_total" min="0" max="10000" required id="tally-form-total" type="number" placeholder="∞" value={parseInt(this.state.tally_total,10)} onChange={this.handleValueChange} />
             <p className="form-help">Hint: You can set a goal if you want to tally a known number of things. Otherwise just set the goal to zero.</p>
           </div>
         </div>

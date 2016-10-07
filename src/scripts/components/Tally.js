@@ -41,7 +41,7 @@ export default React.createClass({
       <section className="panel">
         <header>
           <h1 className="tally-title">{this.state.tallyData.title}</h1>
-          <nav className={isEditable?'tally-edit':'hide'}><Link to={editPath}>Edit</Link></nav>
+          <nav className={isEditable?'tally-edit':'hide'}><Link to={editPath}>Edit your tally</Link></nav>
         </header>
         <div className="show-tally">
           <TallyBlocks total={parseInt(this.state.tallyData.tally_total, 10)} count={parseInt(this.state.tallyData.tally_current, 10)} isEditable={isEditable} incrementActionHandler={this.incrementCount} />
