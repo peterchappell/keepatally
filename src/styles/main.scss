@@ -42,13 +42,23 @@ button, .button, a.button {
   color: #fff;
   display: inline-block;
   font-size: 24px;
-  line-height: 2em;
+  line-height: 48px;
   padding: 0 1em;
   text-decoration: none;
 }
 a.button:hover {
   background-color: lighten($bg-tint-1, 2);
   color: #fff;
+}
+a.button-cancel {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  font-size: 16px;
+  padding-left: 2em;
+}
+a.button-cancel:hover {
+  background: transparent;
 }
 
 a, a:visited {

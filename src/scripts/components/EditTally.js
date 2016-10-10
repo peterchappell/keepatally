@@ -24,12 +24,14 @@ export default React.createClass({
     this.tallyRef = firebase.database().ref('tallies/' + this.props.params.tallyId)
     this.bindAsObject(this.tallyRef, 'tallyData')
     this.setState({
-      userId: this.context.user.uid
+      userId: this.context.user.uid,
+      userName: this.context.user.displayName
     })
   },
   componentWillReceiveProps(nextProps, nextContext) {
     this.setState({
-      userId: nextContext.user.uid
+      userId: nextContext.user.uid,
+      userName: nextContext.user.displayName
     })
   },
   render() {
@@ -39,7 +41,7 @@ export default React.createClass({
           <h1 className="tally-title">{this.state.tallyData.title}</h1>
         </header>
         <div id="create_form">
-          <TallyForm userId={this.state.userId} tallyId={this.props.params.tallyId} tallyData={this.state.tallyData} />
+          <TallyForm userId={this.state.userId} userName={this.state.userName} tallyId={this.props.params.tallyId} tallyData={this.state.tallyData} type="edit" />
         </div>
       </section>
     )

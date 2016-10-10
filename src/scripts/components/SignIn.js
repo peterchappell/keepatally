@@ -9,7 +9,6 @@ export default React.createClass({
   handleGoogleSignIn(event) {
     event.preventDefault()
     if (this.context.user && this.context.user.isAnonymous) {
-      console.log('deleting anonymous user')
       this.context.user.delete()
     }
     var provider = new firebase.auth.GoogleAuthProvider()

@@ -23,7 +23,7 @@ export default React.createClass({
       strokeClass = strokeClass + ' tally-stroke-v-clicked'
     }
     // todo - animate the fifth stroke somehow
-    return strokeClass;
+    return strokeClass
   },
   render() {
     var blockClass = 'tally-block'

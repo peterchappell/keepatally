@@ -18,12 +18,13 @@ export default React.createClass({
           id: key,
           title: this.props.tallies[key] && this.props.tallies[key].title,
           count: this.props.tallies[key] && this.props.tallies[key].tally_current,
-          total: this.props.tallies[key] && this.props.tallies[key].tally_total
+          total: this.props.tallies[key] && this.props.tallies[key].tally_total,
+          dateUpdated: this.props.tallies[key] && this.props.tallies[key].dateUpdated,
+          dateCreated: this.props.tallies[key] && this.props.tallies[key].dateCreated
         }
       })
-      console.log('talliesArray', talliesArray)
       tallyNodes = talliesArray.map(function (tally) {
-        return <TalliesListItem key={tally.id} id={tally.id} count={tally.count} total={tally.total}>{tally.title}</TalliesListItem>
+        return <TalliesListItem key={tally.id} id={tally.id} tallyData={tally}>{tally.title}</TalliesListItem>
       })
     }
     return tallyNodes

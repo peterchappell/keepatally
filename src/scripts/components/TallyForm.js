@@ -1,5 +1,5 @@
 import React from 'react'
-import { browserHistory } from 'react-router'
+import { browserHistory, Link } from 'react-router'
 import firebase from 'firebase/app'
 import ReactFireMixin from 'reactfire'
 
@@ -8,14 +8,16 @@ export default React.createClass({
   getDefaultProps() {
     return {
       tallyId: null,
-      userId: null
+      userId: null,
+      userName: null
     }
   },
   getInitialState() {
     return {
       title: '',
       tally_current: 0,
-      tally_total: 0
+      tally_total: 0,
+      dateCreated: null
     }
   },
   componentWillReceiveProps(nextProps) {
@@ -31,6 +33,7 @@ export default React.createClass({
   handleSubmit(event) {
     var tallyKey
     var dbUpdates
+    var thisTallyUpdate
     event.preventDefault()
     if (!this.props.tallyId) {
       tallyKey = firebase.database().ref().child('tallies').push().key
@@ -38,13 +41,21 @@ export default React.createClass({
       tallyKey = this.props.tallyId
     }
     dbUpdates = {}
-    dbUpdates['/tallies/' + tallyKey] = {
+    thisTallyUpdate = {
       'title': this.state.title,
       'tally_current': this.state.tally_current,
       'tally_total': this.state.tally_total,
       'owner_id': this.props.userId,
+      'owner_name': this.props.userName,
       'shared_with': {} // TODO: Allow for sharing
     }
+    if (this.props.type === 'create') {
+      thisTallyUpdate.dateCreated = Date.now()
+    } else {
+      thisTallyUpdate.dateCreated = this.state.dateCreated
+      thisTallyUpdate.dateUpdated = Date.now()
+    }
+    dbUpdates['/tallies/' + tallyKey] = thisTallyUpdate
     firebase.database().ref().update(dbUpdates).then(
       function() {
         browserHistory.replace('/tallies/' + tallyKey)
@@ -74,6 +85,7 @@ export default React.createClass({
           </div>
         </div>
         <button type="submit">Save</button>
+        <Link to={'/tallies/' + this.props.tallyId} className={this.props.type==='create'?'hide':'button button-cancel'}>Cancel</Link>
       </form>
     )
   }
