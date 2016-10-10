@@ -1,6 +1,7 @@
 /*eslint-env node*/
 
 import React from 'react'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 const ArrowSVG = require('babel!svg-react!../../images/arrow.svg?name=ArrowSVG')
 
@@ -20,6 +21,6 @@ export default React.createClass({
         </div>
       )
     }
-    return (<p>This tally hasn't been started yet.</p>)
+    return (<p>Nothing yet...</p>)
   }
 })

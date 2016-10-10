@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import firebase from 'firebase/app'
 import ReactFireMixin from 'reactfire'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 // components
 import TallyBlocks from './TallyBlocks'
@@ -14,10 +15,11 @@ export default React.createClass({
   getInitialState() {
     return {
       tallyData: {
-        title: '',
+        title: 'Loading the tally...',
         tally_total: 0,
         tally_current: 0,
         owner_id: null,
+        owner_name: 'someone...',
         dateUpdated: null,
         dateCreated: null
       }
@@ -41,6 +43,8 @@ export default React.createClass({
     var createdDateInfo, updatedDateInfo
     if (this.state.tallyData.dateCreated) {
       createdDateInfo = `Created ${new Date(this.state.tallyData.dateCreated).toUTCString()}.`
+    } else {
+      return
     }
     if (this.state.tallyData.dateUpdated) {
       updatedDateInfo = `Last updated ${new Date(this.state.tallyData.dateUpdated).toUTCString()}.`
@@ -60,6 +64,7 @@ export default React.createClass({
     var dateInfo = this.renderDateInfo()
     var createdByText = isEditable?'YOU!':this.state.tallyData.owner_name + '.'
     return (
+      <ReactCSSTransitionGroup transitionName="fadeIn" transitionAppear={true} transitionEnterTimeout={500} transitionLeaveTimeout={500} transitionAppearTimeout={500}>
       <section className="panel">
         <header>
           <h1 className="tally-title">{this.state.tallyData.title}</h1>
@@ -73,6 +78,7 @@ export default React.createClass({
           <TallyBlocks total={parseInt(this.state.tallyData.tally_total, 10)} count={parseInt(this.state.tallyData.tally_current, 10)} isEditable={isEditable} incrementActionHandler={this.incrementCount} />
         </div>
       </section>
+      </ReactCSSTransitionGroup>
     )
   }
 })
