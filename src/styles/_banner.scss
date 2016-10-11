@@ -3,26 +3,109 @@
 .banner {
   background-color: $clr-primary;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
-  overflow: hidden;
+  left: 0;
+  height: 28px;
   padding: 0.5em 1em;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
   h1 {
     float: left;
-    font-size: 24px;
-    font-weight: normal;
-    line-height: 28px;
-    margin: 0;
+    margin: -4px 0 0 -2px;
+  }
+  .logo {
+    fill: #fff;
+    height: 30px;
+    width: 120px;
   }
   nav {
     float: right;
     line-height: 28px;
+    a {
+      display: inline-block;
+      height: 28px;
+      line-height: 28px;
+      margin: -6px 0;
+      padding: 6px;
+    }
+    a:hover {
+      color: #fff;
+    }
+    .icon {
+      fill: #fff;
+    }
+    .text {
+      display: none;
+    }
+    @media (min-width: 400px) {
+      .text {
+        display: inline-block;
+        float: right;
+        line-height: 28px;
+        padding: 0 8px 0 6px;
+        vertical-align: middle;
+      }
+    }
   }
   a {
     color: #fff;
     text-decoration: none;
   }
+  .signin {
+    border: 1px solid #fff;
+    border-radius: 2px;
+    display: inline-block;
+    line-height: 23px;
+    margin: 1px 0 0;
+    padding: 1px 5px;
+  }
+  .signin:hover {
+    color: #fff;
+  }
+  .signout {
+    display: inline-block;
+  }
   .user-nav {
     float: right;
-    line-height: 28px;
-    margin: 0 0 0 2em;
+    margin: 0 0 0 8px;
+    position: relative;
   }
+  .profilePic {
+    border-radius: 50%;
+    float: right;
+    max-height: 28px;
+  }
+  .profilePanel {
+    animation: profilePanelFade 0.3s ease 1;
+    background-color: $bg-tint-2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    padding: 1em;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    .button {
+      font-size: 16px;
+      line-height: 32px;
+    }
+    .arrow-up {
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 10px solid $bg-tint-2;
+      position: absolute;
+      top: -10px;
+      right: 7px;
+    }
+  }
+  .loggedInAs {
+    margin: 0 0 1em;
+    white-space: nowrap;
+  }
+}
+
+@keyframes profilePanelFade {
+  0%   {opacity: 0}
+  100% {opacity: 1}
 }

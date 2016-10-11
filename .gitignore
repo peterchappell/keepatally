@@ -1,6 +1,10 @@
 .DS_Store
 .sass-cache
-public
+
+public/*
+!public/favicon.ico
+!public/apple-touch-icon.png
+
 node_modules
 npm-debug.log
 firebase-debug.log

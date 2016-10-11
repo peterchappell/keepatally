@@ -34,6 +34,7 @@ export default React.createClass({
     this.getTalliesForUser(nextContext.user)
   },
   render() {
+    document.title = 'Tallies - Keep a tally'
     var talliesListContent = (<div><p>You'll need to sign in to see the tallies you've created.</p><Link to='/signin' className='button'>Sign in</Link></div>)
     if (this.context.user && !this.context.user.isAnonymous) {
       talliesListContent = <TalliesList tallies={this.state.tallies} loaded={this.state.loaded} />

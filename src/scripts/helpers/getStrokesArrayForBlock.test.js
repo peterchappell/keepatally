@@ -98,3 +98,9 @@ describe('When the last block is a mixture of waiting and empty', () => {
     ])
   })
 })
+
+describe('When the current tally is greater than the goal and we add a new block', () => {
+  test('total count 37, current tally 40, block index 8', () => {
+    expect(getStrokes(8, 40, 37)).toEqual(Array(5).fill(FLAGS.empty))
+  })
+})

@@ -20,6 +20,6 @@ export default React.createClass({
         </div>
       )
     }
-    return (<p>This tally hasn't been started yet.</p>)
+    return (<p>Nothing yet...</p>)
   }
 })

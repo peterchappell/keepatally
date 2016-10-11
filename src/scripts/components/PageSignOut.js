@@ -12,6 +12,7 @@ export default React.createClass({
     })
   },
   render() {
+    document.title = 'Sign out - Keep a tally'
     return (
       <section className="panel">
         <header>

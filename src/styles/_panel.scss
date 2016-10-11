@@ -1,5 +1,19 @@
 @import "./variables";
 
 .panel {
+  margin: 44px 0 0;
   padding: 1em;
+}
+
+@media (min-width: 500px) {
+  .panel header {
+    margin: 12px 0 24px;
+  }
+}
+
+@media (min-width: 760px) {
+  .panel {
+    margin: 44px auto 0;
+    max-width: 740px;
+  }
 }

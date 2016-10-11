@@ -9,30 +9,71 @@
 @import "./show";
 @import "./tallyBlock";
 @import "./firstMark";
+@import "./talliesListItem";
+@import "./transitions";
+@import "./tallyDates";
+@import "./signIn";
 
 body {
-  background-color: #ECEFF1;
-  color: #263238;
+  background-color: #2f2f2f;
+  color: #fff;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 16px;
   margin: 0;
 }
 
-h1 {
-  color: #455A64;
-  font-size: 28px;
+h1, h2 {
+  color: #f5f5f5;
+  font-family: 'Amatic SC', cursive;
+  font-size: 34px;
   font-weight: normal;
+  margin: 0 0 12px;
+}
+h2 {
+  font-size: 22px;
+  margin-top: 1em;
+}
+ul {
+  padding-left: 30px;
 }
 
 button, .button, a.button {
-  background-color: #455A64;
-  border: none;
+  background-color: $bg-tint-1;
+  border: 1px solid #999;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
   color: #fff;
+  cursor: pointer;
   display: inline-block;
-  padding: 0.5em 1em;
+  font-size: 24px;
+  line-height: 48px;
+  padding: 0 1em;
   text-decoration: none;
+}
+.button:hover {
+  background-color: lighten($bg-tint-1, 2);
+  color: #fff;
+}
+a.button-cancel {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  font-size: 16px;
+  padding-left: 2em;
+}
+a.button-cancel:hover {
+  background: transparent;
+}
+
+a, a:visited {
+  color: #fff;
+}
+a:hover {
+  color: #C8DCFF;
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .active {

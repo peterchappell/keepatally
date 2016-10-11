@@ -6,6 +6,10 @@ import 'firebase/auth'
 // components
 import UserNav from './UserNav'
 
+const LogoSVG = require('babel!svg-react!../../images/keep-a-tally.svg?name=LogoSVG')
+const CreateIcon = require('babel!svg-react!../../images/icon-create.svg?name=CreateIcon')
+const ListIcon = require('babel!svg-react!../../images/icon-list.svg?name=ListIcon')
+
 export default React.createClass({
   childContextTypes: {
     user: React.PropTypes.object
@@ -18,30 +22,24 @@ export default React.createClass({
       user: this.state.user
     }
   },
-  signInAnonymously() {
-    firebase.auth().signInAnonymously().catch((error) => {
-      if (error) {
-        // TODO: Handle errors better
-        console.error('ERROR: There was an error with anonymous authentication', error.code, error.message)
-      }
-    })
-  },
   setupFirebaseAuthListener() {
     this.firebaseAuthListener = firebase.auth().onAuthStateChanged((user) => {
       if (user !== null) {
         this.setState({
           user: user
         })
-      } else {
-        this.signInAnonymously()
       }
     })
   },
   getInitialState() {
+    // set a default user so that there is always a user object in state
+    // use the "isAnonymous" flag to determine logged in state
+    // (simulates Firebase anonymous Auth but without having to create all the anoymous users in Firebase)
     return {
       user: {
         isAnonymous: true,
-        uid: 0
+        uid: 0,
+        displayName: 'Someone...'
       }
     }
   },
@@ -59,11 +57,11 @@ export default React.createClass({
     return (
       <section className="main">
         <header className="banner">
-          <h1><Link to="/">Keep a tally</Link></h1>
+          <h1><Link to="/"><LogoSVG className="logo" /></Link></h1>
           <UserNav isLoggedIn = {!this.state.user.isAnonymous} />
           <nav>
-            <Link to="/create">New tally</Link>
-            <Link to="/tallies">My tallies</Link>
+            <Link to="/create"><CreateIcon className="icon" /><span className="text">Create</span></Link>
+            <Link to="/tallies"><ListIcon className="icon" /><span className="text">List</span></Link>
           </nav>
         </header>
 
