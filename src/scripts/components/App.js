@@ -6,6 +6,8 @@ import 'firebase/auth'
 // components
 import UserNav from './UserNav'
 
+import SESSIONCONSTS from '../consts/sessionConsts'
+
 const LogoSVG = require('babel!svg-react!../../images/keep-a-tally.svg?name=LogoSVG')
 const CreateIcon = require('babel!svg-react!../../images/icon-create.svg?name=CreateIcon')
 const ListIcon = require('babel!svg-react!../../images/icon-list.svg?name=ListIcon')
@@ -39,15 +41,33 @@ export default React.createClass({
       user: {
         isAnonymous: true,
         uid: 0,
-        displayName: 'Someone...'
+        displayName: 'Someone...',
+        isPending: false
       }
     }
+  },
+  setPendingUserState(pendingValue) {
+    let newUser = Object.assign({}, this.state.user, {isPending: pendingValue})
+    this.setState({
+      user: newUser
+    })
   },
   componentDidMount() {
     // using componentDidMount to bind to a listener that retrieves the user
     // https://facebook.github.io/react/tips/initial-ajax.html
     // http://stackoverflow.com/questions/38038343/how-to-remove-the-new-firebase-onauthstatechanged-listener-in-react
     this.setupFirebaseAuthListener()
+    // also get it to check the session variable that we set when attempting to login
+    // (because session access is often faster that waiting for auth - the delay in auth is confusing)
+    var authCheck = sessionStorage.getItem(SESSIONCONSTS.key)
+    if (authCheck && authCheck === SESSIONCONSTS.value) {
+      this.setPendingUserState(true)
+    }
+    // remove the session variable after 5 seconds (to handle an incomplete auth process)
+    window.setTimeout(() => {
+      sessionStorage.removeItem(SESSIONCONSTS.key)
+      this.setPendingUserState(false)
+    }, 5000)
   },
   componentWillUnmount() {
     this.firebaseAuthListener && this.firebaseAuthListener()

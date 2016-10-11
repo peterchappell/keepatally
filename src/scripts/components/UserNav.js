@@ -38,7 +38,9 @@ export default React.createClass({
   },
   render() {
     var userNavLink = <Link to="/signin" className="signin">Sign in</Link>
-    if (this.props.isLoggedIn) {
+    if (this.state.user.isPending) {
+      userNavLink = <div className="signout"></div>
+    } else if (this.props.isLoggedIn) {
       userNavLink = (
         <div className="signout">
           <img src={this.state.user.photoURL} className="profilePic" onClick={this.toggleProfile} />

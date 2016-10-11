@@ -2,8 +2,11 @@ import React from 'react'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 
+import SESSIONCONSTS from '../consts/sessionConsts'
+
 export default React.createClass({
   componentDidMount() {
+    sessionStorage.removeItem(SESSIONCONSTS.key)
     firebase.auth().signOut().then(function() {
       location.href = '/'
     }, function(error) {
