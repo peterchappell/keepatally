@@ -11,12 +11,21 @@ export default React.createClass({
     var provider = new firebase.auth.GoogleAuthProvider()
     firebase.auth().signInWithRedirect(provider)
   },
+  handleFacebookSignIn(event) {
+    event.preventDefault()
+    var provider = new firebase.auth.FacebookAuthProvider();
+    firebase.auth().signInWithRedirect(provider)
+  },
   render() {
     document.title = 'Sign in - Keep a tally'
     var signInContent = (
       <div><p>You have to be signed in to create or modify tallies. You can use
       your Google account to sign in and get started.</p>
-    <button className="signInGoogle" onClick={this.handleGoogleSignIn}>Sign in with Google</button></div>
+      <div className="signInButtons">
+        <button className="signInGoogle button" onClick={this.handleGoogleSignIn}>Sign in with Google</button>
+        <button className="signInFacebook button" onClick={this.handleFacebookSignIn}>Sign in with Facebook</button>
+      </div>
+      </div>
     )
     if (this.context.user && !this.context.user.isAnonymous) {
       signInContent = (
