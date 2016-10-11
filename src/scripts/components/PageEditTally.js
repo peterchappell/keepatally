@@ -37,17 +37,13 @@ export default React.createClass({
   },
   render() {
     document.title = `${this.state.tallyData.title} - Edit - Keep a tally`
-    var editForm = (<TallyForm userId={this.state.userId} userName={this.state.userName} tallyId={this.props.params.tallyId} tallyData={this.state.tallyData} type="edit" />)
-    if (this.state.userId !== this.state.tallyData.owner_id) {
-      editForm = <div><p>This tally is not yours to edit.</p><p>Go back to <Link to="/tallies">your own list of tallies</Link>.</p></div>
-    }
     return (
       <section id="form" className="panel">
         <header>
           <h1 className="tally-title">{this.state.tallyData.title}</h1>
         </header>
-        <div id="create_form">
-          {editForm}
+        <div id="create_form" className={(this.state.userId !== this.state.tallyData.owner_id)?'hide':''}>
+          <TallyForm userId={this.state.userId} userName={this.state.userName} tallyId={this.props.params.tallyId} tallyData={this.state.tallyData} type="edit" />
         </div>
       </section>
     )
