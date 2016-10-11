@@ -3,13 +3,13 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 
 // components
 import App from './App'
-import Welcome from './Welcome'
-import Create from './Create'
-import Tallies from './Tallies'
-import Tally from './Tally'
-import EditTally from './EditTally'
-import SignIn from './SignIn'
-import SignOut from './SignOut'
+import Welcome from './PageWelcome'
+import Create from './PageCreate'
+import Tallies from './PageTallies'
+import Tally from './PageTally'
+import EditTally from './PageEditTally'
+import SignIn from './PageSignIn'
+import SignOut from './PageSignOut'
 import EnsureLoggedInRoute from './EnsureLoggedInRoute'
 
 export default React.createClass({
