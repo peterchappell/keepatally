@@ -22,30 +22,24 @@ export default React.createClass({
       user: this.state.user
     }
   },
-  signInAnonymously() {
-    firebase.auth().signInAnonymously().catch((error) => {
-      if (error) {
-        // TODO: Handle errors better
-        console.error('ERROR: There was an error with anonymous authentication', error.code, error.message)
-      }
-    })
-  },
   setupFirebaseAuthListener() {
     this.firebaseAuthListener = firebase.auth().onAuthStateChanged((user) => {
       if (user !== null) {
         this.setState({
           user: user
         })
-      } else {
-        this.signInAnonymously()
       }
     })
   },
   getInitialState() {
+    // set a default user so that there is always a user object in state
+    // use the "isAnonymous" flag to determine logged in state
+    // (simulates Firebase anonymous Auth but without having to create all the anoymous users in Firebase)
     return {
       user: {
         isAnonymous: true,
-        uid: 0
+        uid: 0,
+        displayName: "Someone..."
       }
     }
   },

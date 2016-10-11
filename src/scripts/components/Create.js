@@ -9,7 +9,8 @@ export default React.createClass({
   },
   getInitialState() {
     return {
-      userId: null
+      uid: null,
+      userName: 'Someone...'
     }
   },
   componentWillMount() {
