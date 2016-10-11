@@ -38,7 +38,7 @@ export default React.createClass({
     var listToRender
     var tallyNodesToRender = this.getTalliesNodes()
     if (!this.props.loaded) {
-      listToRender = (<p>Loading...</p>)
+      listToRender = (<p>...</p>)
     } else if (tallyNodesToRender.length) {
       listToRender = (<div>{tallyNodesToRender}</div>)
     } else {

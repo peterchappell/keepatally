@@ -6,6 +6,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 // components
 import TallyBlocks from './TallyBlocks'
+import TallyDates from './TallyDates'
 
 export default React.createClass({
   mixins: [ReactFireMixin],
@@ -39,29 +40,9 @@ export default React.createClass({
     updates[tallyRef + '/dateUpdated'] = Date.now()
     firebase.database().ref().update(updates)
   },
-  renderDateInfo() {
-    var createdDateInfo, updatedDateInfo
-    if (this.state.tallyData.dateCreated) {
-      createdDateInfo = `Created ${new Date(this.state.tallyData.dateCreated).toUTCString()}.`
-    } else {
-      return
-    }
-    if (this.state.tallyData.dateUpdated) {
-      updatedDateInfo = `Last updated ${new Date(this.state.tallyData.dateUpdated).toUTCString()}.`
-    } else {
-      updatedDateInfo = 'No updates yet.'
-    }
-    return (
-      <ul className="tally-info-dates">
-         <li>{createdDateInfo}</li>
-         <li>{updatedDateInfo}</li>
-      </ul>
-    )
-  },
   render() {
     var isEditable = this.isEditable()
     var editPath = '/tallies/' + this.props.params.tallyId + '/edit'
-    var dateInfo = this.renderDateInfo()
     var createdByText = isEditable?'YOU!':this.state.tallyData.owner_name + '.'
     return (
       <ReactCSSTransitionGroup transitionName="fadeIn" transitionAppear={true} transitionEnterTimeout={500} transitionLeaveTimeout={500} transitionAppearTimeout={500}>
@@ -72,7 +53,7 @@ export default React.createClass({
             This tally is being kept by {createdByText}
             <nav className={isEditable?'tally-edit':'hide'}>(<Link to={editPath}>edit your tally</Link>).</nav>
           </div>
-          {dateInfo}
+          <TallyDates dateCreated={this.state.tallyData.dateCreated} dateUpdated={this.state.tallyData.dateUpdated} />
         </header>
         <div className="show-tally">
           <TallyBlocks total={parseInt(this.state.tallyData.tally_total, 10)} count={parseInt(this.state.tallyData.tally_current, 10)} isEditable={isEditable} incrementActionHandler={this.incrementCount} />
