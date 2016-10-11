@@ -1,8 +1,15 @@
 {
   "rules": {
-    ".read": "auth != null",
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    },
     "tallies": {
       ".indexOn": ["owner_id"],
+      ".read": true,
+      ".write": "auth != null",
       "$tally_id": {
     	  ".write": "root.child('tallies/'+$tally_id+'/owner_id').val() === auth.uid || !data.exists()"
       }
