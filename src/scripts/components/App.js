@@ -39,7 +39,7 @@ export default React.createClass({
       user: {
         isAnonymous: true,
         uid: 0,
-        displayName: "Someone..."
+        displayName: 'Someone...'
       }
     }
   },

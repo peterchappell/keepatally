@@ -1,7 +1,6 @@
 /*eslint-env node*/
 
 import React from 'react'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 const ArrowSVG = require('babel!svg-react!../../images/arrow.svg?name=ArrowSVG')
 

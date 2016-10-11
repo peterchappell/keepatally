@@ -13,7 +13,7 @@ export default React.createClass({
   },
   handleFacebookSignIn(event) {
     event.preventDefault()
-    var provider = new firebase.auth.FacebookAuthProvider();
+    var provider = new firebase.auth.FacebookAuthProvider()
     firebase.auth().signInWithRedirect(provider)
   },
   render() {

@@ -31,7 +31,7 @@ export default React.createClass({
       showPanel: !this.state.showPanel
     })
   },
-  closeUserPanelClickHandler(ev) {
+  closeUserPanelClickHandler() {
     this.setState({
       showPanel: false
     })

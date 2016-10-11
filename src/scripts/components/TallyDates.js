@@ -17,11 +17,11 @@ export default React.createClass({
     if (type === 'updated' && date) {
       return `Last updated: ${prettyDate}.`
     } else if (type === 'updated') {
-      return `No updates yet.`
+      return 'No updates yet.'
     } else if (type === 'created' && date)  {
       return `Created: ${prettyDate}.`
     } else if (type === 'created') {
-      return `Created before time was even being recorded!`
+      return 'Created before time was even being recorded!'
     }
     return false
   },

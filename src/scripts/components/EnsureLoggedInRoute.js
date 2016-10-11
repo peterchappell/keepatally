@@ -11,7 +11,7 @@ export default React.createClass({
     }
   },
   componentWillReceiveProps(nextProps, nextContext) {
-    window.clearTimeout(this.waitForAuthBeforeRedirect);
+    window.clearTimeout(this.waitForAuthBeforeRedirect)
     this.redirectAnonUsers(nextContext.user)
   },
   componentDidMount() {
