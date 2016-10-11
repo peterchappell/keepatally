@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router'
 
+import SignedInPanel from './SignedInPanel'
+
 export default React.createClass({
   contextTypes: {
     user: React.PropTypes.object
@@ -29,17 +31,18 @@ export default React.createClass({
       showPanel: !this.state.showPanel
     })
   },
+  closeUserPanelClickHandler(ev) {
+    this.setState({
+      showPanel: false
+    })
+  },
   render() {
     var userNavLink = <Link to="/signin" className="signin">Sign in</Link>
     if (this.props.isLoggedIn) {
       userNavLink = (
         <div className="signout">
           <img src={this.state.user.photoURL} className="profilePic" onClick={this.toggleProfile} />
-          <div className={this.state.showPanel?'profilePanel':'hide'}>
-            <p className="loggedInAs">Signed in as <strong>{this.state.user.displayName}</strong></p>
-            <Link to="/signout" className="button">Sign out</Link>
-            <div className="arrow-up"></div>
-          </div>
+          <SignedInPanel isShowing={this.state.showPanel} userName={this.state.user.displayName} clickAnywhereToCloseHandler={this.closeUserPanelClickHandler} />
         </div>
       )
     }

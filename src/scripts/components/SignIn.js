@@ -9,13 +9,14 @@ export default React.createClass({
   handleGoogleSignIn(event) {
     event.preventDefault()
     if (this.context.user && this.context.user.isAnonymous) {
-      this.context.user.delete()
+      //this.context.user.delete()
     }
     var provider = new firebase.auth.GoogleAuthProvider()
     firebase.auth().signOut().then(function() {
       firebase.auth().signInWithRedirect(provider)
     }, function(error) {
       console.error('ERROR: There was a problem signing out', error.code, error.message)
+      firebase.auth().signInWithRedirect(provider)
     })
   },
   render() {
