@@ -6,7 +6,7 @@ This is a demo project to play with and learn about Firebase.
 
 This project is built using Firebase, React and Webpack (among other things).
 
-To work locally, you can just run `npm run dev`.
+To work locally, you'll need to do an `npm install` and then you can just run `npm run dev`.
 
 This will:
 
@@ -17,7 +17,11 @@ But it's flaky to run the two together... so maybe run these two things in
 two separate terminal windows
 
 * `npm run watch` // to run webpack in watch module
-* `firebase serve` // to run the firebase server
+* `npm run serve` // to run the firebase server
+
+## Production build
+
+Use `npm run prod` to do a production build.
 
 ### Tests
 

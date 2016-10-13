@@ -4,6 +4,7 @@
 public/*
 !public/favicon.ico
 !public/apple-touch-icon.png
+!public/keepatally.png
 
 node_modules
 npm-debug.log

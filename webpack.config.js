@@ -1,6 +1,15 @@
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const merge = require('webpack-merge');
+const validate = require('webpack-validator');
+const CustomValidationSchema = require('webpack-validator').Joi
 
-module.exports = {
+/*
+This is a handy page on managin multiple configs:
+http://survivejs.com/webpack/developing-with-webpack/splitting-configuration/
+*/
+
+const commonConfig = {
   entry: {
     styles: './src/styles/main.scss',
     script: './src/scripts/index.js'
@@ -43,3 +52,33 @@ module.exports = {
     })
   ]
 }
+
+const prodConfig = {
+  devtool: 'cheap-module-source-map',
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress:{
+        warnings: true
+      }
+    })
+  ]
+}
+
+var config;
+
+if (process.env.npm_lifecycle_event === 'prod') {
+  config = merge(commonConfig, prodConfig, {})
+} else {
+  config = commonConfig
+}
+
+const schemaExtension = CustomValidationSchema.object({
+  sassLoader: CustomValidationSchema.any()
+})
+
+module.exports = validate(config, {schemaExtension: schemaExtension});
